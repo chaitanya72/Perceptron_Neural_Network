@@ -1,8 +1,3 @@
-# Lanka, Chaitanya Krishna
-# 1001-675-459
-# 2019-09-22
-# Assignment-01-02
-
 import numpy as np
 import pytest
 from perceptron import Perceptron
