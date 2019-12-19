@@ -82,44 +82,12 @@ class Perceptron(object):
         """
         ones = np.ones((1,X.shape[1]))
         X_bias = np.concatenate((ones,X),axis = 0)
-        #print("X_bias")
-        #print(X_bias)
+        
         for epoch in range(0,num_epochs):
             for i in range(0,X.shape[1]):
                 a = self.predict(X)
                 e = Y - a
                 self.weights = self.weights + alpha*np.dot(e[:,i].reshape(self.number_of_classes,1),X_bias[:,i].reshape(self.input_dimensions+1,1).T)
-
-
-
-            #a = self.predict(X)
-        	#e = Y - a
-        	#print(a)
-        	#print(Y)
-        	#rint(e)
-        	#self.weights = self.weights + e*X_bias.T
-        	#print("The shape if weigths:"+str(self.weights.shape))
-        	#print("The shape of e:"+str(e.shape))
-        	#print((np.dot(e,X_bias.T)))
-        	#if self.calculate_percent_error(X,Y)
-        	#print(self.weights)
-        	#print(np.dot(e,X_bias.T))
-        	#self.weights = self.weights + np.dot(e,X_bias.T)
-        	#self.weights += np.dot(e,X_bias.T)
-        	#print(np.dot(self.weights,X_bias))
-        	#print(epoch)
-        #raise Warning("You must implement train")
-        #print("The time:"+str(self.count))
-        #print(self.weights)
-        #print("The e value")
-        #print(e)
-        #print("The dot product value")
-        #print(np.dot(e,X_bias.T))
-        #print("The value of Y")
-        #print(Y)
-        #print("The value of a")
-        #print(a)
-        #self.count=self.count+1
 
     def calculate_percent_error(self,X, Y):
         """
@@ -131,25 +99,10 @@ class Perceptron(object):
         :return percent_error
         """
         y_pred = self.predict(X)
-        #print(self.weights)
-        #print(y_pred[:,0])
-        #print(Y[:,0])
-        #if y_pred[:,0].all() != y_pred[:,0].all():
-        #	print("Entered")
-        #if np.array_equal(y_pred[:,0],Y[:,0]):
-        #	print("Equal")
-        #percent_error = [i for i in range(0,Y.shape[1]) if y_pred[:,i].all()==Y[:,i].all()]
-        #for i in range(0, Y.shape[1]):
-        #	print(y_pred[:,i])
-        #	print(Y[:,i])
-        #print("WWWWWWWWWW")
+        
         percent_error = [i for i in range(0,Y.shape[1]) if np.array_equal(Y[:,i],y_pred[:,i])]
-        #print(y_pred)
-        #print("The slength of output:"+str(len(percent_error)))
-        #print(percent_error)
         return (Y.shape[1]-len(percent_error))/Y.shape[1]
-        #raise Warning("You must implement calculate_percent_error")
-
+        
 if __name__ == "__main__":
     """
     This main program is a sample of how to run your program.
@@ -175,7 +128,4 @@ if __name__ == "__main__":
         percent_error.append(model.calculate_percent_error(X_train,Y_train))
     print("******  Percent Error ******\n",percent_error)
     print("****** Model weights ******\n",model.weights)
-    #print(model.predict(X_train))
-    #ones = np.ones((1,X_train.shape[1]))
-    #X_train = np.concatenate((ones,X_train),axis=0)
-    #print(np.dot(model.weights,X_train))
+    
